@@ -14,7 +14,7 @@ def readme():
 
 setup(
     name='torrentcheck',
-    version='0.1',
+    version='0.1.1',
     py_modules=['torrentcheck'],
     description='Check the integrity of torrent downloads.',
     long_description=readme(),
