@@ -9,7 +9,7 @@ import bencode
 parser = argparse.ArgumentParser(
     description='Check the integrity of torrent downloads.')
 parser.add_argument('directory', help='download directory')
-parser.add_argument('torrent', nargs='*', help='the .torrent file')
+parser.add_argument('torrent', nargs='*', help='torrent file')
 parser.add_argument(
     '--delete',
     action='store_true',
@@ -18,7 +18,7 @@ parser.add_argument(
 parser.add_argument(
     '--list-delete',
     action='store_true',
-    help='list the files that would have been deleted if --delete was set')
+    help='list the files that would be deleted if --delete was set')
 parser.add_argument(
     '--debug',
     action='store_true',
