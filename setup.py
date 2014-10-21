@@ -1,7 +1,7 @@
 from codecs import open
 from os import path
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 here = path.abspath(path.dirname(__file__))
 
@@ -15,7 +15,7 @@ def readme():
 setup(
     name='torrentcheck',
     version='0.1',
-    packages=find_packages(exclude=['docs', 'tests*']),
+    py_modules=['torrentcheck'],
     description='Check the integrity of torrent downloads.',
     long_description=readme(),
     url='https://github.com/clee704/torrentcheck',
