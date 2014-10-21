@@ -1,0 +1,5 @@
+torrentcheck is a command line tool that checks the integrity of torrent
+downloads. It can also delete files that is not part of the download.
+
+torrentcheck is a Python package. You can install it with pip by typing
+`pip install torrentcheck`. Then type `torrentcheck --help` to see the help.
