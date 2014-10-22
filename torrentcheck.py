@@ -43,6 +43,7 @@ def main():
                 ok = cmd(info, torrent_path, args)
             except Exception:
                 ok = False
+                print '{}: ERROR'.format(torrent_path)
                 if args.debug:
                     raise
             all_ok = all_ok and ok
