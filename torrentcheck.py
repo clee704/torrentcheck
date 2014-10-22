@@ -26,28 +26,31 @@ parser.add_argument(
 
 
 def main():
-    args = parser.parse_args()
-    if not os.path.isdir(args.directory):
-        print '{} is not a directory'.format(args.directory)
-        return 2
-    if args.delete or args.list_delete:
-        cmd = delete_cmd
-    else:
-        cmd = verify_cmd
-    all_ok = True
-    for torrent_path in args.torrent:
-        with open(torrent_path, 'rb') as f:
-            torrent = bencode.bdecode(f.read())
-            info = torrent['info']
-            try:
-                ok = cmd(info, torrent_path, args)
-            except Exception:
-                ok = False
-                print '{}: ERROR'.format(torrent_path)
-                if args.debug:
-                    raise
-            all_ok = all_ok and ok
-    return 0 if all_ok else 1
+    try:
+        args = parser.parse_args()
+        if not os.path.isdir(args.directory):
+            print '{} is not a directory'.format(args.directory)
+            return 2
+        if args.delete or args.list_delete:
+            cmd = delete_cmd
+        else:
+            cmd = verify_cmd
+        all_ok = True
+        for torrent_path in args.torrent:
+            with open(torrent_path, 'rb') as f:
+                torrent = bencode.bdecode(f.read())
+                info = torrent['info']
+                try:
+                    ok = cmd(info, torrent_path, args)
+                except Exception:
+                    ok = False
+                    print '{}: ERROR'.format(torrent_path)
+                    if args.debug:
+                        raise
+                all_ok = all_ok and ok
+        return 0 if all_ok else 1
+    except KeyboardInterrupt:
+        return 1
 
 
 def delete_cmd(info, torrent_path, args):
